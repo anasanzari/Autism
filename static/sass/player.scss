@@ -1,0 +1,7 @@
+@import "player/videoplayer.scss";
+.video-js{
+  width:100%;
+  @media screen and (min-width: 720px){
+    height: 489px;
+  }
+}
