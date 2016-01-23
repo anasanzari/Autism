@@ -59,18 +59,17 @@
                   allow them to be strong, allow them to experience life on their own terms, allow them to take the subway...
                   let them be better people, let them believe more in themselves.”</em> </p>
                   <p class="pull-right"> - C. JoyBell C.</p>
+                  <h1 style="padding-top:30px">About Us</h2>
+                  <p>The Autism Community, the nation’s leading grassroots autism organization, exists to improve the lives of all affected by autism.
+                     We do this by increasing public awareness about the day-to-day issues faced by people on the spectrum,
+                     advocating for appropriate services for individuals across the lifespan,
+                    and providing the latest information regarding treatment, education, research and advocacy.</p>
+
                 </div>
           </div>
           <div class="row">
-            <div class="col-md-4">
-              <img class="img-responsive" src="./static/images/boy.jpg" />
-            </div>
-            <div class="col-md-8">
-              <h1>About Us</h2>
-              <p>The Autism Community, the nation’s leading grassroots autism organization, exists to improve the lives of all affected by autism.
-                 We do this by increasing public awareness about the day-to-day issues faced by people on the spectrum,
-                 advocating for appropriate services for individuals across the lifespan,
-                and providing the latest information regarding treatment, education, research and advocacy.</p>
+            <div class="col-md-8 col-md-offset-2">
+
             </div>
           </div>
     </div>
