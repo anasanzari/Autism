@@ -21,6 +21,7 @@
     <div class="scontent">
       <h1>Autism Community</h1>
       <h2>Something about this organization</h2>
+      <a class="button" href="login.php">Login</a>
     </div>
   </div>
   <div class="about">

@@ -9,7 +9,7 @@ require_once './helpers/User.php';
 $session = new Session();
 
 if($session->getLoggedin()){
-  header("Location: ./customer/index.php");
+  header("Location: ./trainer/index.php");
 }
 
 if(isset($_POST['email'])&&isset($_POST['password'])){
@@ -17,7 +17,9 @@ if(isset($_POST['email'])&&isset($_POST['password'])){
   //var_dump($u);
   if($u){
     $session->logIn($u->id, Session::USER_REGULAR);
-    header('Location: ./customer/index.php');
+    header('Location: ./trainer/index.php');
+  }else{
+    $error = true;
   }
 }else{
 //  header('Location: index.php');
@@ -29,32 +31,43 @@ if(isset($_POST['email'])&&isset($_POST['password'])){
 <html lang="en">
 
 <head>
-  <title>FoodWeb</title>
+  <title>Autism</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link href="./public/css/styles.css" rel="stylesheet" />
-  <script type="text/javascript" src="./public/js/jquery.min.js"></script>
-  <script type="text/javascript" src="./public/js/materialize.min.js"></script>
+  <link href="./static/css/awe.css" rel="stylesheet">
+  <link href="./static/css/player.css" rel="stylesheet">
+  <link href="./static/css/styles.css" rel="stylesheet" />
+  <script type="text/javascript" src="./static/js/jquery.min.js"></script>
+  <script type="text/javascript" src="./static/js/bootstrap.min.js"></script>
 </head>
 <body>
 
 
 <div class="loginpage">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col s12">
-        <p class="error">Incorrect Email/Password. Please try again.</p>
+      <div class="col-md-6 col-md-offset-3 col-sm-12">
+        <h1>Autism Community</h1>
         <h4>Login</h4>
-        <form class="col s12" action="login.php" method="POST">
-              <div class="row">
-                <div class="input-field col s12">
-                  <input placeholder="Email" name="email"  type="email">
+        <?php
+
+        if(isset($error)){
+          ?>
+          <p class="alert alert-danger">Invalid Email/Password.</p>
+          <?php
+        }
+
+         ?>
+        <form class="form-horizontal" action="login.php" method="POST">
+          <div class="form-group">
+                  <input class="form-control" placeholder="Email" name="email"  type="email" required>
+          </div>
+                <div class="form-group">
+                  <input class="form-control" placeholder="Password" name="password" type="password" required>
                 </div>
-                <div class="input-field col s12">
-                  <input placeholder="Password" name="password" type="password">
-                </div>
-                <div class="input-field col s12">
-                  <input type="submit" class="waves-effect btn" value="Login"/>
+                <div class="form-group">
+                  <input class="form-control" type="submit" class="btn" value="Login"/>
                 </div>
               </div>
         </form>

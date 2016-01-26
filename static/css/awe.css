@@ -5860,6 +5860,9 @@ button.close {
     -ms-transform: rotate(5deg);
     transform: rotate(5deg);
     box-shadow: 0px -1px 3px rgba(0, 0, 0, 0.4); }
+    .slc .main .button {
+      margin-left: 50px;
+      margin-top: 10px; }
     .slc .main .scontent {
       -webkit-transform: rotate(-5deg);
       -moz-transform: rotate(-5deg);
@@ -5944,7 +5947,7 @@ a:focus {
   -webkit-box-shadow: -3px 3px 5px 1px rgba(0, 0, 0, 0.6);
   box-shadow: -3px 3px 5px 1px rgba(0, 0, 0, 0.6); }
 
-.trans, a.brochure {
+.trans, a.button {
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   transition: all 0.5s ease; }
@@ -6006,7 +6009,7 @@ p {
   z-index: -3;
   background-image: url("../images/a2.jpg"); }
 
-a.brochure {
+a.button {
   background-color: #E53935;
   -moz-box-shadow: -3px 3px 5px 1px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: -3px 3px 5px 1px rgba(0, 0, 0, 0.3);
@@ -6014,11 +6017,16 @@ a.brochure {
   display: inline-block;
   color: #fff;
   text-decoration: none;
-  padding: 10px 15px;
-  font-size: 1em;
+  padding: 10px 20px;
+  font-size: 2rem;
   cursor: pointer; }
 
-a.brochure:hover {
+a.button:hover {
   background: #dd201c; }
+
+.loginpage {
+  min-height: 100vh;
+  padding-top: 150px;
+  background-image: url("../images/pattern.png"); }
 
 /*# sourceMappingURL=awe.css.map */
