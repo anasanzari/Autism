@@ -9,20 +9,30 @@ require_once './helpers/User.php';
 $session = new Session();
 
 if($session->getLoggedin()){
-  header("Location: ./trainer/index.php");
+  if($session->getUsertype()==USER_ADMIN){
+    header("Location: ./trainer/index.php");
+  }else{
+    header("Location: ./user/index.php");
+  }
 }
 
 if(isset($_POST['email'])&&isset($_POST['password'])){
+
+  if($_POST['email']==$admin_email&&$_POST['password']==$admin_password){
+    $session->logIn(1, Session::USER_ADMIN);
+    header('Location: ./trainer/index.php');
+  }
+
   $u = User::where('email',$_POST['email'])->where('password',$_POST['password'])->first();
-  //var_dump($u);
+
   if($u){
     $session->logIn($u->id, Session::USER_REGULAR);
-    header('Location: ./trainer/index.php');
+    header('Location: ./user/index.php');
   }else{
     $error = true;
   }
 }else{
-//  header('Location: index.php');
+
 }
 
  ?>
