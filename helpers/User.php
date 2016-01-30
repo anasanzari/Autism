@@ -6,7 +6,7 @@ class User extends Model {
 
 	//
 	public $timestamps = false;
-	protected $table = 'users';
+	protected $table = 'autism_users';
 	protected $fillable = ['name','phone','address','email','password'];
 
 }

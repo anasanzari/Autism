@@ -6,7 +6,7 @@ class Article extends Model {
 
 	//
 	public $timestamps = false;
-	protected $table = 'articles';
+	protected $table = 'autism_articles';
 	protected $fillable = ['name','author','content'];
 
 }
