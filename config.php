@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 $dbhost = "localhost";
 $db = "autism";

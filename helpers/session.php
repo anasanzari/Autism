@@ -4,6 +4,8 @@ class Session {
 
     const USER_ADMIN = 1;
     const USER_REGULAR = 2;
+    const USER_TRAINER =3;
+    const USER_DOCTOR = 4;
 
     private $loggedin = false;
     private $username;
@@ -29,6 +31,21 @@ class Session {
     function forceLogin($loc){
       if(!$this->getLoggedin()){
         header("Location: ".$loc);
+      }
+    }
+
+    function redirectIfAuth($l1,$l2,$l3,$l4){
+
+      if($this->getLoggedin()){
+        if($this->getUsertype()==Session::USER_ADMIN){
+          header("Location: $l1/index.php");
+        }else if($this->getUsertype()==Session::USER_TRAINER){
+          header("Location: $l2/index.php");
+        }else if($this->getUsertype()==Session::USER_DOCTOR){
+          header("Location: $l3/index.php");
+        }else{
+          header("Location: $l4/index.php");
+        }
       }
     }
 
