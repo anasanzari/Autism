@@ -1,3 +1,21 @@
+<?php
+
+require __DIR__.'/./vendor/autoload.php';
+require './config.php';
+require_once './helpers/session.php';
+require './helpers/boot.php';
+require_once './helpers/User.php';
+require './helpers/functions.php';
+
+$session = new Session();
+if($session->getLoggedin()){
+  $user = User::find($session->getUsername());
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +39,9 @@
     <div class="scontent">
       <h1>Autism Community</h1>
       <h2>Something about this organization</h2>
-      <a class="button" href="login.php">Login</a>
+      <?php if(!isset($user)){
+        echo '<a class="button" href="login.php">Login</a>';
+      }?>
     </div>
   </div>
   <div class="about">
@@ -82,15 +102,15 @@
           <h1>Services</h1>
           <div class="col-md-4">
             <img src="./static/images/icons/talk.png" />
-            <h3>Online training</h3>
+            <a href="#"><h3>Online training</h3></a>
           </div>
           <div class="col-md-4">
             <img  src="./static/images/icons/videos.png" />
-            <h3>Watch videos</h3>
+            <a href="#"><h3>Watch videos</h3></a>
           </div>
           <div class="col-md-4">
-            <img src="./static/images/icons/interact.png" />
-            <h3>Interact with child</h3>
+            <a href="./articles/index.php"><img src="./static/images/icons/text.png" /></a>
+            <a href="./articles/index.php"><h3>Read Articles</h3></a>
           </div>
         </div>
 </div>

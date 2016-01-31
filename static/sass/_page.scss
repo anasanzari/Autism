@@ -158,15 +158,23 @@ a.button:hover{
   }
 }
 
+.articles{
+  padding-top: 70px;
+}
+
 .card{
   border: 1px solid rgb(136, 127, 130);
   border-radius: 3px;
   padding: 8px;
   margin-bottom: 10px;
+  background: #AC4D63;
+  color:#fff;
+  box-shadow: 0px 8px 17px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);
   .small{
     font-size: 2rem;
     width:20px;
     height: 20px;
+    color:#fff;
     &:before{
       top:0px;
       left:5px;
@@ -176,6 +184,7 @@ a.button:hover{
     font-size: 1rem;
     width:15px;
     height:15px;
+    color:#fff;
     &:before{
       top:0px;
       left:5px;

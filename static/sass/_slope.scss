@@ -83,6 +83,38 @@
      }
   }
 
+  .subp{
+    background: url('../images/dash.jpg');
+    background-size: cover;
+    background-position: center center;
+    margin-top: -250px;
+    margin-left: -10px;
+    width:110%;
+    min-height: 200px;
+    .button{
+      margin-left: 50px;
+      margin-top: 10px;
+    }
+    @include rotate (5deg);
+  	box-shadow: 0px -1px 3px rgba(0,0,0,0.4);
+    .scontent{
+      @include rotate (-5deg);
+     	padding: 100px 100px 100px 100px;
+      h1,h2{
+        color: #fff;
+        text-shadow: 2px 2px 5px #000;
+      }
+      h1{
+
+      }
+      h2{
+        padding-top: 50px;
+        font-size: 2.5rem;
+      }
+     }
+  }
+
+
 }
 .services{
   margin-bottom: -120px;

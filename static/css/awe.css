@@ -5877,6 +5877,36 @@ button.close {
         padding-top: 50px; }
       .slc .main .scontent h2 {
         font-size: 2.5rem; }
+  .slc .subp {
+    background: url("../images/dash.jpg");
+    background-size: cover;
+    background-position: center center;
+    margin-top: -250px;
+    margin-left: -10px;
+    width: 110%;
+    min-height: 200px;
+    -webkit-transform: rotate(5deg);
+    -moz-transform: rotate(5deg);
+    -o-transform: rotate(5deg);
+    -ms-transform: rotate(5deg);
+    transform: rotate(5deg);
+    box-shadow: 0px -1px 3px rgba(0, 0, 0, 0.4); }
+    .slc .subp .button {
+      margin-left: 50px;
+      margin-top: 10px; }
+    .slc .subp .scontent {
+      -webkit-transform: rotate(-5deg);
+      -moz-transform: rotate(-5deg);
+      -o-transform: rotate(-5deg);
+      -ms-transform: rotate(-5deg);
+      transform: rotate(-5deg);
+      padding: 100px 100px 100px 100px; }
+      .slc .subp .scontent h1, .slc .subp .scontent h2 {
+        color: #fff;
+        text-shadow: 2px 2px 5px #000; }
+      .slc .subp .scontent h2 {
+        padding-top: 50px;
+        font-size: 2.5rem; }
 
 .services {
   margin-bottom: -120px; }
@@ -6037,22 +6067,30 @@ a.button:hover {
   .fic:before {
     position: absolute; }
 
+.articles {
+  padding-top: 70px; }
+
 .card {
   border: 1px solid #887f82;
   border-radius: 3px;
   padding: 8px;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  background: #AC4D63;
+  color: #fff;
+  box-shadow: 0px 8px 17px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19); }
   .card .small {
     font-size: 2rem;
     width: 20px;
-    height: 20px; }
+    height: 20px;
+    color: #fff; }
     .card .small:before {
       top: 0px;
       left: 5px; }
   .card .auth {
     font-size: 1rem;
     width: 15px;
-    height: 15px; }
+    height: 15px;
+    color: #fff; }
     .card .auth:before {
       top: 0px;
       left: 5px; }

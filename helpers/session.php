@@ -38,13 +38,13 @@ class Session {
 
       if($this->getLoggedin()){
         if($this->getUsertype()==Session::USER_ADMIN){
-          header("Location: $l1/index.php");
+          header("Location: $l1");
         }else if($this->getUsertype()==Session::USER_TRAINER){
-          header("Location: $l2/index.php");
+          header("Location: $l2");
         }else if($this->getUsertype()==Session::USER_DOCTOR){
-          header("Location: $l3/index.php");
+          header("Location: $l3");
         }else{
-          header("Location: $l4/index.php");
+          header("Location: $l4");
         }
       }
     }

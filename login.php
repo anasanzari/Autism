@@ -18,7 +18,7 @@ const ERROR_MAILTAKEN = 5;
 
 
 $session = new Session();
-$session->redirectIfAuth('./admin','./trainer','./doctor','./user');
+$session->redirectIfAuth('./admin/index.php','./trainer/index.php','./doctor/index.php','./index.php');
 
 $factory = new ValidatorFactory(new Translator('en'));
 $messages = getErrorMessages();
@@ -29,7 +29,7 @@ if(isset($_POST['type'])){
 
     if($_POST['email']==$admin_email&&$_POST['password']==$admin_password){
       $session->logIn(1, Session::USER_ADMIN);
-      $session->redirectIfAuth('./admin','./trainer','./doctor','./user');
+      $session->redirectIfAuth('./admin/index.php','./trainer/index.php','./doctor/index.php','./index.php');
     }
 
     $validator = $factory->make($_POST, ['email'=>'required','password'=>'required'],$messages);
@@ -37,7 +37,7 @@ if(isset($_POST['type'])){
       $u = User::where('email',$_POST['email'])->where('password',$_POST['password'])->first();
       if($u){
         $session->logIn($u->id, $u->type);
-        $session->redirectIfAuth('./admin','./trainer','./doctor','./user');
+        $session->redirectIfAuth('./admin/index.php','./trainer/index.php','./doctor/index.php','./index.php');
       }else{
         $error = ERROR_INVALID;
       }
@@ -63,7 +63,7 @@ if(isset($_POST['type'])){
       }else{
         if($u = User::create($_POST)){
           $session->logIn($u->id, $u->type);
-          $session->redirectIfAuth('./admin','./trainer','./doctor','./user');
+          $session->redirectIfAuth('./admin/index.php','./trainer/index.php','./doctor/index.php','./index.php');
         }else{
           $error = ERROR_DB;
         }
