@@ -19,11 +19,12 @@ $articles = Article::all();
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Autism</title>
-  <link href="../static/css/awe.css" rel="stylesheet">
-  <link href="../static/css/player.css" rel="stylesheet">
-  <script type="text/javascript" src="../static/js/jquery-1.11.3.min.js"></script>
-  <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="../static/js/video.min.js"></script>
+  <link href="./static/css/awe.css" rel="stylesheet">
+  <link href="./static/css/player.css" rel="stylesheet">
+  <script type="text/javascript" src="./static/js/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="./static/js/bootstrap.min.js"></script>
+  <link href="./static/css/bootstrap.min.css" rel="stylesheet">
+  <script type="text/javascript" src="./static/js/video.min.js"></script>
 
 </head>
 
