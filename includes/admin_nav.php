@@ -4,6 +4,14 @@ function active($params,$value){
     return 'class="active"';
   }
 }
+if($params['page']=='article'){
+$videolink = "../videos/index.php";
+$articlelink = "./index.php";
+}else{
+  $videolink = "./index.php";
+  $articlelink = "../articles/index.php";
+}
+
  ?>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="navbar-header">
@@ -17,8 +25,8 @@ function active($params,$value){
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-            <li <?=active($params,'article')?>><a href="./index.php"><i class="fa fa-pencil"></i> Articles</a></li>
-            <li <?=active($params,'video')?>><a href="#"><i class="fa fa-play"></i> Videos</a></li>
+            <li <?=active($params,'article')?>><a href="<?=$articlelink?>"><i class="fa fa-pencil"></i> Articles</a></li>
+            <li <?=active($params,'video')?>><a href="<?=$videolink?>"><i class="fa fa-play"></i> Videos</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right navbar-user">
 

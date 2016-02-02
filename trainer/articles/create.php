@@ -29,7 +29,7 @@ if(isset($_POST['create']))
 
 <div class="wrapper">
 
-  <?php getTemplate(2,'admin_nav',['active'=>'article']); ?>
+  <?php getTemplate(2,'admin_nav',['page'=>'article','active'=>'article']); ?>
 
 
   <div class="page-wrapper">

@@ -1,4 +1,4 @@
-<?php
+'page'='article',<?php
 
 require __DIR__.'/../../vendor/autoload.php';
 require '../../config.php';
@@ -32,7 +32,7 @@ else{
 
     <div class="wrapper">
 
-      <?php getTemplate(2,'admin_nav',['active'=>'article']); ?>
+      <?php getTemplate(2,'admin_nav',['page'=>'article','active'=>'article']); ?>
 
         <div class="page-wrapper">
           <div class="container-fluid">
