@@ -49,7 +49,7 @@ else{
                   </div>
                   <div class="form-group">
                     <label>Content</label>
-                    <textarea class="form-control" name="content"><?= $article->content ?></textarea>
+                    <textarea id="art" rows="15" class="form-control" name="content"><?= $article->content ?></textarea>
                   </div>
                   <div class="form-group">
                     <input class="form-control btn btn-primary" type="submit" value="submit" name="create">
@@ -61,5 +61,13 @@ else{
           </div>
         </div>
       </div>
+
+      <script type="text/javascript" src="../../static/js/markitup/jquery.markitup.js"></script>
+      <script type="text/javascript" src="../../static/js/markitup/settings.js"></script>
+      <script>
+        $('#art').markItUp(mySettings);
+      </script>
+
+
 </body>
 </html>
