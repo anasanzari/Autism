@@ -30,7 +30,9 @@ $article = Article::find($_GET['id']);
       <div class="col-md-12">
 
         <h1><?= $article->name ?> <small style="font-size:14px">by <?= $article->author ?></small></h1>
-        <p><?= $article->content ?></p>
+        <div class="preview">
+          <?= $article->content ?></p>
+        </div>
       </div>
     </div>
   </div>
