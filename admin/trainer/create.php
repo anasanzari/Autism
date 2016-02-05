@@ -7,7 +7,6 @@ require_once '../../helpers/session.php';
 require '../../helpers/boot.php';
 require '../../helpers/functions.php';
 require_once '../../helpers/User.php';
-require_once '../../helpers/Article.php';
 
 $session = new Session();
 if(!$session->getLoggedin()){
@@ -17,11 +16,13 @@ if(!$session->getLoggedin()){
 
 if(isset($_POST['create']))
 {
-  $article = new Article;
-  $article->name = $_POST['name'];
-  $article->author = $_POST['author'];
-  $article->content = $_POST['content'];
-  $article->save();
+  $user = new User;
+  $user->name = $_POST['name'];
+  $user->phone = $_POST['phone'];
+  $user->email = $_POST['email'];
+  $user->address = $_POST['address'];
+  $user->type = 3;
+  $user->save();
   header("Location: ./index.php");
 }
 ?>
@@ -29,7 +30,7 @@ if(isset($_POST['create']))
 
 <div class="wrapper">
 
-  <?php getTemplate(2,'admin_nav',['page'=>'article','active'=>'article']); ?>
+  <?php getTemplate(2,'admin',['page'=>'trainer','active'=>'trainer']); ?>
 
 
   <div class="page-wrapper">
@@ -39,16 +40,20 @@ if(isset($_POST['create']))
 
         <form action="create.php" method="post" class="horizontal-form">
           <div class="form-group">
-            <label>Author</label>
-              <input class="form-control" type="text" name="author">
+            <label>Trainer Name</label>
+              <input class="form-control" type="text" name="name">
           </div>
           <div class="form-group" name="name">
-            <label>Name of Article</label>
-            <input class="form-control" name="name">
+            <label>Phone</label>
+            <input class="form-control" name="phone">
+          </div>
+          <div class="form-group" name="name">
+            <label>Email</label>
+            <input class="form-control" name="email">
           </div>
           <div class="form-group">
-            <label>Content</label>
-            <textarea id="art" rows="15" class="form-control" name="content"></textarea>
+            <label>Address</label>
+            <textarea class="form-control" name="address"></textarea>
           </div>
           <div class="form-group">
               <input class="form-control btn btn-primary" type="submit" value="submit" name="create">
@@ -61,9 +66,6 @@ if(isset($_POST['create']))
 
 <script type="text/javascript" src="../../static/js/markitup/jquery.markitup.js"></script>
 <script type="text/javascript" src="../../static/js/markitup/settings.js"></script>
-<script>
-  $('#art').markItUp(mySettings);
-</script>
 
   </body>
 <r/html>

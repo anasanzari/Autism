@@ -10,7 +10,7 @@ require_once '../../helpers/Article.php';
 
 $session = new Session();
 if(!$session->getLoggedin()){
-  header("Location: ./login.php");
+  header("Location: ../../login.php");
 }
 
 $articles = Article::all();

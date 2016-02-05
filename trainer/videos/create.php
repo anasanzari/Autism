@@ -11,7 +11,7 @@ require_once '../../helpers/Video.php';
 
 $session = new Session();
 if(!$session->getLoggedin()){
-  header("Location: ./login.php");
+  header("Location: ../../login.php");
 }
 
 $f=4;

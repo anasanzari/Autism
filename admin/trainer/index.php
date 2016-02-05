@@ -6,14 +6,13 @@ require_once '../../helpers/session.php';
 require '../../helpers/boot.php';
 require '../../helpers/functions.php';
 require_once '../../helpers/User.php';
-require_once '../../helpers/Video.php';
 
 $session = new Session();
 if(!$session->getLoggedin()){
   header("Location: ../../login.php");
 }
 
-$video = Video::all();
+$users = User::all();
 
 ?>
 
@@ -21,7 +20,7 @@ $video = Video::all();
 
 <div class="wrapper">
 
-  <?php getTemplate(2,'admin_nav',['page'=>'videos','active'=>'video']); ?>
+  <?php getTemplate(2,'admin',['page'=>'trainer','active'=>'trainer']); ?>
 
 
 <div class="page-wrapper">
@@ -29,27 +28,33 @@ $video = Video::all();
     <div class="row">
       <div class="col-md-12">
 
-        <h2>Videos</h2>
+        <h2>Trainers</h2>
         <table class="table table-striped">
           <tr>
             <th>Name</th>
+            <td>Phone</th>
+            <th>Email</th>
             <th>Links</th>
           </tr>
           <?php
-          foreach($video as $video)
-          {?>
+          foreach($users as $user)
+          {
+            if($user->type == 3){?>
           <tr>
-            <td><?= $video->name ?></td>
+            <td><?= $user->name ?></td>
+            <td><?= $user->phone ?></td>
+            <td><?= $user->email ?></td>
             <td>
-              <a href="view.php?id=<?= $video->id ?>" class="btn btn-default">Watch Now</a>
-              <a href="delete.php?id=<?= $video->id ?>" class="btn btn-default">Delete</a>
+              <a href="edit.php?id=<?= $user->id ?>" class="btn btn-default">Edit</a>
+              <a href="delete.php?id=<?= $user->id ?>" class="btn btn-default">Delete</a>
             </td>
           </tr>
           <?php }
+        }
           ?>
         </table>
 
-        <a href="./create.php" class="btn btn-default">upload</a>
+        <a href="./create.php" class="btn btn-default">Add New Trainer</a>
 
       </div>
     </div>

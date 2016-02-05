@@ -1,4 +1,4 @@
-'page'='article',<?php
+<?php
 
 require __DIR__.'/../../vendor/autoload.php';
 require '../../config.php';
@@ -10,7 +10,7 @@ require_once '../../helpers/Article.php';
 
 $session = new Session();
 if(!$session->getLoggedin()){
-  header("Location: ./login.php");
+  header("Location: ../../login.php");
 }
 
 

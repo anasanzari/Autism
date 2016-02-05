@@ -10,7 +10,7 @@ require_once '../../helpers/Video.php';
 
 $session = new Session();
 if(!$session->getLoggedin()){
-  header("Location: ./login.php");
+  header("Location: ../../login.php");
 }
 
 $video = Video::find($_GET['id']);
