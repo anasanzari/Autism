@@ -83,8 +83,14 @@
      }
   }
 
-  .subp{
+  .subp-v{
+    background: url('../images/video.jpg');
+  }
+  .subp-a{
     background: url('../images/dash.jpg');
+  }
+
+  .subp{
     background-size: cover;
     background-position: center center;
     margin-top: -250px;

@@ -7,9 +7,9 @@ require '../helpers/boot.php';
 require '../helpers/functions.php';
 require_once '../helpers/User.php';
 require_once '../helpers/Article.php';
+require_once '../helpers/Video.php';
 
-
-$articles = Article::all();
+$video = Video::all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,10 +31,10 @@ $articles = Article::all();
 <body>
 
 <div class="slc">
-  <div class="slope subp">
+  <div class="slope subp subp-v">
     <div class="scontent">
       <h2>Autism Community</h2>
-      <h1>Articles</h1>
+      <h1>Videos</h1>
 
     </div>
   </div>
@@ -43,13 +43,12 @@ $articles = Article::all();
 
     <div class="row">
       <?php
-      foreach($articles as $article)
+      foreach($video as $video)
       {?>
       <div class="col-md-4">
         <div class="card">
-          <h2><i class="small fic fa fa-pencil"></i> <?= $article->name ?></h2>
-          <h4><i class="auth fic fa fa-user"></i> <?= $article->author ?></h4>
-          <a href="./article.php?id=<?=$article->id?>" class="btn btn-default">Read</a>
+          <h2><i class="small fic fa fa-play"></i> <?= $video->name ?></h2>
+          <a href="./video/video.php?id=<?=$video->id?>" class="btn btn-default">Watch</a>
         </div>
       </div>
       <?php }

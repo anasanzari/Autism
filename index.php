@@ -105,12 +105,12 @@ if($session->getLoggedin()){
             <a href="#"><h3>Online training</h3></a>
           </div>
           <div class="col-md-4">
-            <img  src="./static/images/icons/videos.png" />
-            <a href="#"><h3>Watch videos</h3></a>
+            <a href="./common/videos.php"><img  src="./static/images/icons/videos.png" /></a>
+            <a href="./common/videos.php"><h3>Watch videos</h3></a>
           </div>
           <div class="col-md-4">
-            <a href="./articles/index.php"><img src="./static/images/icons/text.png" /></a>
-            <a href="./articles/index.php"><h3>Read Articles</h3></a>
+            <a href="./common/articles.php"><img src="./static/images/icons/text.png" /></a>
+            <a href="./common/articles.php"><h3>Read Articles</h3></a>
           </div>
         </div>
 </div>

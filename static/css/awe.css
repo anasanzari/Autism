@@ -5877,8 +5877,11 @@ button.close {
         padding-top: 50px; }
       .slc .main .scontent h2 {
         font-size: 2.5rem; }
+  .slc .subp-v {
+    background: url("../images/video.jpg"); }
+  .slc .subp-a {
+    background: url("../images/dash.jpg"); }
   .slc .subp {
-    background: url("../images/dash.jpg");
     background-size: cover;
     background-position: center center;
     margin-top: -250px;
