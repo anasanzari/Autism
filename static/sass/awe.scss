@@ -51,6 +51,12 @@
 @import "bootstrap/popovers";
 @import "bootstrap/carousel";
 
+// Chat Styles //
+
+@import "chat/config";
+@import "chat/style";
+@import "chat/themes";
+
 // Utility classes
 @import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
