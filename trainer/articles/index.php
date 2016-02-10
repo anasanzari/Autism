@@ -13,15 +13,16 @@ if(!$session->getLoggedin()){
   header("Location: ../../login.php");
 }
 
-$articles = Article::all();
-
+$username = $_SESSION['username'];
+$user = User::find($username);
+$articles = $user->article;
 ?>
 
 <?php getTemplate(2,'header'); ?>
 
 <div class="wrapper">
 
-  <?php getTemplate(2,'admin_nav',['page'=>'article','active'=>'article']); ?>
+  <?php getTemplate(2,'trainer_nav',['page'=>'article','active'=>'article']); ?>
 
 
 <div class="page-wrapper">
@@ -31,6 +32,7 @@ $articles = Article::all();
 
         <h2>Articles</h2>
         <table class="table table-striped">
+
           <tr>
             <th>Name</th>
             <td>Author</th>

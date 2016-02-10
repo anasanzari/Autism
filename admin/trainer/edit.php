@@ -32,7 +32,7 @@ else{
 
     <div class="wrapper">
 
-      <?php getTemplate(2,'admin',['page'=>'doctor','active'=>'doctor']); ?>
+      <?php getTemplate(2,'admin_nav',['page'=>'trainer','active'=>'trainer']); ?>
 
         <div class="page-wrapper">
           <div class="container-fluid">
@@ -43,13 +43,13 @@ else{
                     <label>Trainer Name</label>
                       <input class="form-control" type="text" name="name" value="<?= $user->name ?>">
                   </div>
-                  <div class="form-group" name="name">
+                  <div class="form-group">
                     <label>Phone</label>
                     <input class="form-control" name="phone" value="<?= $user->phone ?>">
                   </div>
-                  <div class="form-group" name="name">
+                  <div class="form-group">
                     <label>Email</label>
-                    <input class="form-control" name="email" value="<?= $user->email ?>">
+                    <input class="form-control" type="email" name="email" value="<?= $user->email ?>">
                   </div>
                   <div class="form-group">
                     <label>Address</label>

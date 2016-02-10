@@ -6,6 +6,8 @@ require_once '../../helpers/session.php';
 require '../../helpers/boot.php';
 require '../../helpers/functions.php';
 require_once '../../helpers/User.php';
+require_once '../../helpers/Video.php';
+require_once '../../helpers/Article.php';
 
 $session = new Session();
 if(!$session->getLoggedin()){
@@ -20,7 +22,7 @@ $users = User::all();
 
 <div class="wrapper">
 
-  <?php getTemplate(2,'admin',['page'=>'trainer','active'=>'trainer']); ?>
+  <?php getTemplate(2,'admin_nav',['page'=>'trainer','active'=>'trainer']); ?>
 
 
 <div class="page-wrapper">
@@ -34,6 +36,8 @@ $users = User::all();
             <th>Name</th>
             <td>Phone</th>
             <th>Email</th>
+            <th>Videos</th>
+            <th>Articles</th>
             <th>Links</th>
           </tr>
           <?php
@@ -44,6 +48,8 @@ $users = User::all();
             <td><?= $user->name ?></td>
             <td><?= $user->phone ?></td>
             <td><?= $user->email ?></td>
+            <td><?= sizeof($user->video) ?></td>
+            <td><?= sizeof($user->article) ?></td>
             <td>
               <a href="edit.php?id=<?= $user->id ?>" class="btn btn-default">Edit</a>
               <a href="delete.php?id=<?= $user->id ?>" class="btn btn-default">Delete</a>

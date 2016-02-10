@@ -44,6 +44,8 @@ if(isset($_POST['upload']))
         "../../videos/" . $_FILES["file"]["name"]);
         $video->link =  $_FILES["file"]["name"];
         $video->type = $_FILES["file"]["type"];
+        $username = $_SESSION['username'];
+        $video->user_id = $username;
         $video->save();
         $f=1;
         }
@@ -59,7 +61,7 @@ if(isset($_POST['upload']))
 
 <div class="wrapper">
 
-  <?php getTemplate(2,'admin_nav',['page'=>'videos','active'=>'video']); ?>
+  <?php getTemplate(2,'trainer_nav',['page'=>'videos','active'=>'video']); ?>
 
 
   <div class="page-wrapper">

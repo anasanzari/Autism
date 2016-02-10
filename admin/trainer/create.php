@@ -22,6 +22,7 @@ if(isset($_POST['create']))
   $user->email = $_POST['email'];
   $user->address = $_POST['address'];
   $user->type = 3;
+  $user->password = "password";
   $user->save();
   header("Location: ./index.php");
 }
@@ -30,7 +31,7 @@ if(isset($_POST['create']))
 
 <div class="wrapper">
 
-  <?php getTemplate(2,'admin',['page'=>'trainer','active'=>'trainer']); ?>
+  <?php getTemplate(2,'admin_nav',['page'=>'trainer','active'=>'trainer']); ?>
 
 
   <div class="page-wrapper">

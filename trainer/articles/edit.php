@@ -20,6 +20,8 @@ if(isset($_POST['create']))
   $article->name = $_POST['name'];
   $article->author = $_POST['author'];
   $article->content = $_POST['content'];
+  $username = $_SESSION['username'];
+  $article->user_id = $username;
   $article->save();
   header("location: ./index.php");
 }
@@ -32,7 +34,7 @@ else{
 
     <div class="wrapper">
 
-      <?php getTemplate(2,'admin_nav',['page'=>'article','active'=>'article']); ?>
+      <?php getTemplate(2,'trainer_nav',['page'=>'article','active'=>'article']); ?>
 
         <div class="page-wrapper">
           <div class="container-fluid">

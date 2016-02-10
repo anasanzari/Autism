@@ -13,7 +13,9 @@ if(!$session->getLoggedin()){
   header("Location: ../../login.php");
 }
 
-$video = Video::all();
+$username = $_SESSION['username'];
+$user = User::find($username);
+$video = $user->video;
 
 ?>
 
@@ -21,7 +23,7 @@ $video = Video::all();
 
 <div class="wrapper">
 
-  <?php getTemplate(2,'admin_nav',['page'=>'videos','active'=>'video']); ?>
+  <?php getTemplate(2,'trainer_nav',['page'=>'videos','active'=>'video']); ?>
 
 
 <div class="page-wrapper">
