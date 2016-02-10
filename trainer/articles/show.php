@@ -21,7 +21,7 @@ $article = Article::find($_GET['id']);
 
 <div class="wrapper">
 
-  <?php getTemplate(2,'admin_nav',['page'=>'article','active'=>'article']); ?>
+  <?php getTemplate(2,'trainer_nav',['page'=>'article','active'=>'article']); ?>
 
 
 <div class="page-wrapper">

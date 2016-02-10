@@ -20,7 +20,7 @@ $users = User::all();
 
 <div class="wrapper">
 
-  <?php getTemplate(2,'admin',['page'=>'doctor','active'=>'doctor']); ?>
+  <?php getTemplate(2,'admin_nav',['page'=>'doctor','active'=>'doctor']); ?>
 
 
 <div class="page-wrapper">

@@ -4,12 +4,12 @@ function active($params,$value){
     return 'class="active"';
   }
 }
-if($params['page']=='article'){
-$videolink = "../videos/index.php";
-$articlelink = "./index.php";
+if($params['page']=='trainer'){
+$doctorlink = "../doctor/index.php";
+$trainerlink = "./index.php";
 }else{
-  $videolink = "./index.php";
-  $articlelink = "../articles/index.php";
+  $doctorlink = "./index.php";
+  $trainerlink = "../trainer/index.php";
 }
 
  ?>
@@ -21,12 +21,12 @@ $articlelink = "./index.php";
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Trainer</a>
+        <a class="navbar-brand" href="index.html">Admin</a>
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-            <li <?=active($params,'article')?>><a href="<?=$articlelink?>"><i class="fa fa-pencil"></i> Articles</a></li>
-            <li <?=active($params,'video')?>><a href="<?=$videolink?>"><i class="fa fa-play"></i> Videos</a></li>
+            <li <?=active($params,'trainer')?>><a href="<?=$trainerlink?>"><i class="fa fa-pencil"></i> Trainers</a></li>
+            <li <?=active($params,'doctor')?>><a href="<?=$doctorlink?>"><i class="fa fa-play"></i> Doctors</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right navbar-user">
 

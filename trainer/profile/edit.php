@@ -32,7 +32,7 @@ else{
 
     <div class="wrapper">
 
-      <?php getTemplate(2,'admin_nav',['page'=>'doctor','active'=>'doctor']); ?>
+      <?php getTemplate(2,'trainer_nav',['page'=>'profile','active'=>'profile']); ?>
 
         <div class="page-wrapper">
           <div class="container-fluid">
@@ -40,16 +40,16 @@ else{
               <div class="col-md-12">
                 <form action="edit.php?id=<?= $user->id ?>" method="post" class="horizontal-form">
                   <div class="form-group">
-                    <label>Doctor Name</label>
+                    <label>Trainer Name</label>
                       <input class="form-control" type="text" name="name" value="<?= $user->name ?>">
                   </div>
-                  <div class="form-group">
+                  <div class="form-group" name="name">
                     <label>Phone</label>
                     <input class="form-control" name="phone" value="<?= $user->phone ?>">
                   </div>
-                  <div class="form-group">
+                  <div class="form-group" name="name">
                     <label>Email</label>
-                    <input class="form-control" type="email" name="email" value="<?= $user->email ?>">
+                    <input class="form-control" name="email" value="<?= $user->email ?>">
                   </div>
                   <div class="form-group">
                     <label>Address</label>
