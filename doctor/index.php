@@ -35,72 +35,42 @@ $user = User::find($session->getUsername());
 
 <body ng-app="app">
 
-<div class="slc">
-  <div class="slope subp subp-a">
-    <div class="scontent">
-      <h2>Autism Community</h2>
-      <h1>Chat</h1>
+<div class="wrapper">
 
-    </div>
-  </div>
+  <?php getTemplate(1,'doctor_nav',['page'=>'trainer','active'=>'trainer']); ?>
 
-  <div class="articles container-fluid">
 
-    <div class="row">
-      <div class="col-md-12">
-          <div ng-controller="ChatController">
-            <div class="row">
-              <div class="col-md-4 col-md-offset-1">
-                <h3>Online Doctors</h3>
-                <p class="alert alert-danger" ng-show="doctors.length==0">Nobody is online.</p>
-                <div class="list-group">
-                  <button ng-repeat="doctor in doctors"
-                          ng-click="changeDoctor(doctor)"
-                          type="button" class="list-group-item">{{doctor.name}}</button>
-                </div>
-                <a href="../logout.php" class="btn btn-default">Logout</a>
-              </div>
-              <div ng-show="boxOn" class="col-md-6">
-                <irontec-simple-chat
-                    messages="messages"
-                    username="username"
-                    my-user-id="userid"
-                    input-placeholder-text="You can write here"
-                    submit-button-text="Send your message"
-                    title="{{currentDoctor.name}}"
-                    theme="material"
-                    on-submit= "sendMessage"
-                    visible="true">
-                </irontec-simple-chat>
-              </div>
-            </div>
+<div class="page-wrapper">
+  <div class="container-fluid">
+    <div ng-controller="ChatController">
+      <div class="row">
+        <div class="col-md-4 col-md-offset-1">
+          <h3>Online Users</h3>
+          <p class="alert alert-danger" ng-show="doctors.length==0">Nobody is online.</p>
+          <div class="list-group">
+            <button ng-repeat="doctor in doctors"
+                    ng-click="changeDoctor(doctor)"
+                    type="button" class="list-group-item">{{doctor.name}}</button>
           </div>
-
-
+        </div>
+        <div ng-show="boxOn" class="col-md-6">
+          <irontec-simple-chat
+              messages="messages"
+              username="username"
+              my-user-id="userid"
+              input-placeholder-text="You can write here"
+              submit-button-text="Send your message"
+              title="{{currentDoctor.name}}"
+              theme="material"
+              on-submit= "sendMessage"
+              visible="true">
+          </irontec-simple-chat>
+        </div>
       </div>
     </div>
-
   </div>
-
 </div>
 
-
-
-
-<div class="contact">
-  <div class="slope tilt">
-      <div class="scontent">
-        <h1>Contact Us</h1>
-        <p>Autism Community<br>
-        Somewhere between the streets<br>
-        Bangalore, Karnataka<br>
-        India</p>
-        <p>
-          Email : auticom@acorg.in</br>
-          Phone : 8956127568
-        </p>
-      </div>
-  </div>
 </div>
 
 
@@ -124,7 +94,7 @@ $user = User::find($session->getUsername());
   }
 
   app.factory('ChatApi',function ($resource) {
-      return $resource("./api.php", {},
+      return $resource("../chat/api.php", {},
       {
           get:{method:'GET', cache:false,isArray:false},
           getArray:{method:'GET', cache:false,isArray:true},
@@ -188,13 +158,12 @@ $user = User::find($session->getUsername());
     }
 
     $scope.refreshOnline = function(){
-      ChatApi.getArray({query: 'online_doctors'}, function (response) {
+      ChatApi.getArray({query: 'online_users'}, function (response) {
           $scope.doctors = response;
           console.log(response);
       });
     };
     $scope.refreshOnline();
-
 
 
   });
@@ -204,6 +173,6 @@ $user = User::find($session->getUsername());
 
 
 </script>
-
 </body>
+
 </html>

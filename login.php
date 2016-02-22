@@ -2,8 +2,10 @@
 
 require __DIR__.'/./vendor/autoload.php';
 require './config.php';
-require_once './helpers/session.php';
 require './helpers/boot.php';
+
+require_once './helpers/OnlineUser.php';
+require_once './helpers/session.php';
 require_once './helpers/User.php';
 require './helpers/functions.php';
 

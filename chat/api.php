@@ -16,6 +16,16 @@ $data = json_decode($data,TRUE);
 $out = [];
 
 if(isset($data['post'])){
+  $type = $data['post'];
+  switch ($type) {
+      case 'addMessage' : $out = addMessage($data); break;
+          break;
+      case 'online_users' : $out = online_users(session::USER_REGULAR);
+          break;
+      default: setStatus($out,'fail','invalid type.');
+          break;
+  }
+
 
 }else{
   //get request
@@ -27,6 +37,10 @@ if(isset($data['post'])){
             case 'online_doctors' : $out = online_users(session::USER_DOCTOR);
                 break;
             case 'online_users' : $out = online_users(session::USER_REGULAR);
+                break;
+            case 'getHistory' : $out = getHistory();
+                break;
+            case 'getUpdates' : $out = getUpdates();
                 break;
             default: setStatus($out,'fail','invalid type.');
                 break;
@@ -71,4 +85,33 @@ function online_users($type){
         ->get();
     return $r;
 }
+
+function getHistory(){
+
+  return Chat::where(['from_id' => $_GET['from_id'],'to_id' => $_GET['to_id']])
+              ->orWhere(['from_id'=>$_GET['to_id'],'to_id' => $_GET['from_id']])
+              ->orderby('time','asc')->get();
+}
+
+// any new messages from to_id ?
+function getUpdates(){
+
+  return Chat::where(['from_id' => $_GET['to_id'],'to_id' => $_GET['from_id']])
+              ->where('time','>',$_GET['lastRecieved'])
+              ->orderby('time','asc')->get();
+}
+
+
+/* post functions */
+function addMessage($data){
+  /* 'from_id','to_id','message','time' */
+  $data['time'] = date("Y-m-d H:i:s");
+  if($c = Chat::create($data)){
+    $c['status'] = 'success';
+  }else{
+    $c['status'] = 'fail';
+  }
+  return $c;
+}
+
 ?>

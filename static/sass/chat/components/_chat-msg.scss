@@ -1,8 +1,6 @@
-// Chat Message Class
+// Chat Message Class   box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
 .chat-msg {
-  background: #fff;
   border-radius: 2px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
   max-width: 100%;
   padding: 10px;
 
@@ -20,22 +18,65 @@
     display: block;
   }
 
-  &.chat-msg-receive {
-    margin-right: 0;
+$reply : rgb(114, 215, 212);
+$recieve: rgb(43, 204, 156);
+
+  &.chat-msg-recieved {
+    margin-left: 10px;
+    margin-right: 20px;
     padding-bottom: 20px;
+    position: relative;
+    background: $recieve;
+    display: inline-block;
+    &:before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left:-10px;
+        width: 0;
+        height: 0;
+        border: 10px solid $recieve;
+        border-left-color: transparent;
+        border-bottom-color: transparent;
+
+    }
+    .mesg{
+      font-size: 1.5rem;
+      text-align: left;
+    }
+
   }
 
   &.chat-msg-sent {
-    margin-right: 0;
+    margin-right: 10px;
+    margin-left: 20px;
     padding-bottom: 20px;
-
+    position: relative;
+    background: $reply;
+    display: inline-block;
+    float:right;
     .chat-msg-author {
       text-align: right;
     }
-
     time {
       float: right;
     }
+    &:before{
+        content: "";
+        position: absolute;
+        bottom: 0px;
+        right:-10px;
+        width: 0;
+        height: 0;
+        border: 10px solid $reply;
+        border-right-color: transparent;
+        border-top-color: transparent;
+    }
+    .mesg{
+      font-size: 1.5rem;
+      text-align: right;
+    }
+
   }
 
 }

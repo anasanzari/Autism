@@ -7,7 +7,7 @@
 	function SimpleChat($timeout) {
 		var directive = {
 			restrict: 'EA',
-			templateUrl: 'chatTemplate.html',
+			templateUrl: '../chat/chatLayout.html',
 			replace: true,
 			scope: {
 				messages: '=',
@@ -17,10 +17,10 @@
 				submitButtonText: '@',
 				title: '@',
 				theme: '@',
-				submitFunction: '&',
+				submit: '&onSubmit',
 				visible: '=',
 				infiniteScroll: '&',
-                expandOnNew: '='
+        expandOnNew: '='
 			},
 			link: link,
 			controller: ChatCtrl,
@@ -45,7 +45,7 @@
 			scope.$chatInput = $(element).find('.chat-input');
 
 			var elWindow = scope.$msgContainer[0];
-			scope.$msgContainer.bind('scroll', _.throttle(function() {
+			/*scope.$msgContainer.bind('scroll', _.throttle(function() {
 				var scrollHeight = elWindow.scrollHeight;
 				if (elWindow.scrollTop <= 10) {
 					scope.historyLoading = true; // disable jump to bottom
@@ -56,7 +56,7 @@
 							scope.$msgContainer.scrollTop(360); // scroll down for loading 4 messages
 					}, 150);
 				}
-			}, 300));
+			}, 300));*/
 		}
 
 		return directive;
@@ -67,25 +67,24 @@
 	function ChatCtrl($scope, $timeout) {
 		var vm = this;
 
-        vm.isHidden = false;
-		vm.messages = $scope.messages;
-		vm.username = $scope.username;
-		vm.myUserId = $scope.myUserId;
-		vm.inputPlaceholderText = $scope.inputPlaceholderText;
-		vm.submitButtonText = $scope.submitButtonText;
-		vm.title = $scope.title;
-		vm.theme = 'chat-th-' + $scope.theme;
-		vm.writingMessage = '';
-		vm.panelStyle = {'display': 'block'};
-		vm.chatButtonClass= 'fa-angle-double-down icon_minim';
+    $scope.isHidden = false;
+		$scope.messages = $scope.messages;
+		$scope.username = $scope.username;
+		$scope.myUserId = $scope.myUserId;
+		$scope.inputPlaceholderText = $scope.inputPlaceholderText;
+		$scope.submitButtonText = $scope.submitButtonText;
+		$scope.title = $scope.title;
+		$scope.theme = 'chat-th-' + $scope.theme;
+		$scope.writingMessage = '';
+		$scope.panelStyle = {'display': 'block'};
+		$scope.chatButtonClass= 'fa-angle-double-down icon_minim';
 
-		vm.toggle = toggle;
-		vm.close = close;
-		vm.submitFunction = submitFunction;
-
-		function submitFunction() {
-			$scope.submitFunction()(vm.writingMessage, vm.username);
-			vm.writingMessage = '';
+		$scope.toggle = toggle;
+		$scope.close = close;
+		$scope.submitFunction = function(){
+			//alert($scope.submit);
+			$scope.submit()($scope.writingMessage, $scope.username);
+			$scope.writingMessage = '';
 			scrollToBottom();
 		}
 
@@ -113,15 +112,15 @@
 		}
 
 		function toggle() {
-			if(vm.isHidden) {
-				vm.chatButtonClass = 'fa-angle-double-down icon_minim';
-				vm.panelStyle = {'display': 'block'};
-				vm.isHidden = false;
+			if($scope.isHidden) {
+				$scope.chatButtonClass = 'fa-angle-double-down icon_minim';
+				$scope.panelStyle = {'display': 'block'};
+				$scope.isHidden = false;
 				scrollToBottom();
 			} else {
-				vm.chatButtonClass = 'fa-expand icon_minim';
-				vm.panelStyle = {'display': 'none'};
-				vm.isHidden = true;
+				$scope.chatButtonClass = 'fa-expand icon_minim';
+				$scope.panelStyle = {'display': 'none'};
+				$scope.isHidden = true;
 			}
 		}
 	}

@@ -5615,9 +5615,8 @@ button.close {
   background: #666;
   color: #fff;
   overflow: hidden;
-  padding: 10px;
+  padding: 15px 10px;
   position: relative;
-  height: 70px;
   max-height: 70px;
   border-radius: 0; }
   .chat-top-bar .icon-minim {
@@ -5637,7 +5636,8 @@ button.close {
 .msg-container-base {
   background: #e5e5e5;
   margin: 0;
-  height: calc(100% - 140px);
+  max-height: 300px;
+  overflow: auto;
   overflow-x: hidden;
   padding: 0 10px 10px; }
   .msg-container-base::-webkit-scrollbar-track {
@@ -5655,9 +5655,7 @@ button.close {
     padding: 10px; }
 
 .chat-msg {
-  background: #fff;
   border-radius: 2px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   max-width: 100%;
   padding: 10px; }
   .chat-msg p {
@@ -5668,16 +5666,51 @@ button.close {
     font-size: 11px; }
   .chat-msg .chat-msg-author {
     display: block; }
-  .chat-msg.chat-msg-receive {
-    margin-right: 0;
-    padding-bottom: 20px; }
+  .chat-msg.chat-msg-recieved {
+    margin-left: 10px;
+    margin-right: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    background: #2bcc9c;
+    display: inline-block; }
+    .chat-msg.chat-msg-recieved:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -10px;
+      width: 0;
+      height: 0;
+      border: 10px solid #2bcc9c;
+      border-left-color: transparent;
+      border-bottom-color: transparent; }
+    .chat-msg.chat-msg-recieved .mesg {
+      font-size: 1.5rem;
+      text-align: left; }
   .chat-msg.chat-msg-sent {
-    margin-right: 0;
-    padding-bottom: 20px; }
+    margin-right: 10px;
+    margin-left: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    background: #72d7d4;
+    display: inline-block;
+    float: right; }
     .chat-msg.chat-msg-sent .chat-msg-author {
       text-align: right; }
     .chat-msg.chat-msg-sent time {
       float: right; }
+    .chat-msg.chat-msg-sent:before {
+      content: "";
+      position: absolute;
+      bottom: 0px;
+      right: -10px;
+      width: 0;
+      height: 0;
+      border: 10px solid #72d7d4;
+      border-right-color: transparent;
+      border-top-color: transparent; }
+    .chat-msg.chat-msg-sent .mesg {
+      font-size: 1.5rem;
+      text-align: right; }
 
 .chat-th-irontec .chat-top-bar {
   background: #c33;

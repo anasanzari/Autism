@@ -102,7 +102,7 @@ if($session->getLoggedin()){
           <h1>Services</h1>
           <div class="col-md-4">
             <img src="./static/images/icons/talk.png" />
-            <a href="#"><h3>Online training</h3></a>
+            <a href="./chat/index.php"><h3>Online training</h3></a>
           </div>
           <div class="col-md-4">
             <a href="./common/videos.php"><img  src="./static/images/icons/videos.png" /></a>

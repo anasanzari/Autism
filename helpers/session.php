@@ -11,6 +11,8 @@ class Session {
     private $username;
     private $usertype;
 
+    // giving more capabilities. Chat Api Sync.
+
     function __construct() {
         session_start();
         $this->checkLogin();
@@ -54,14 +56,27 @@ class Session {
         $this->username = $_SESSION['username'] = $user;
         $this->usertype = $_SESSION['usertype'] = $user_type;
         $this->loggedin = true;
+
+        if($this->usertype==session::USER_DOCTOR||$this->usertype==session::USER_REGULAR){
+          //add to online table.
+          $date = date('Y-m-d h:i:s');
+          OnlineUser::destroy(['id'=>$this->username]);
+          $u = OnlineUser::create(['id'=>$this->username,'lastseen'=>$date]);
+        }
+
     }
 
     function logOut(){
+
+      if($this->usertype==session::USER_DOCTOR||$this->usertype==session::USER_REGULAR){
+        OnlineUser::destroy(['id'=>$this->username]);
+      }
         unset($_SESSION['username']);
         unset($_SESSION['usertype']);
         unset($this->username);
         unset($this->usertype);
         $this->loggedin = false;
+
     }
 
     function getLoggedin() {
