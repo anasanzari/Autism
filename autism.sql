@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2016 at 04:07 PM
+-- Generation Time: Feb 22, 2016 at 07:56 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -48,6 +48,31 @@ INSERT INTO `autism_articles` (`id`, `name`, `author`, `published_at`, `content`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `autism_chat`
+--
+
+CREATE TABLE IF NOT EXISTS `autism_chat` (
+`id` int(11) NOT NULL,
+  `from_id` int(11) NOT NULL,
+  `to_id` int(11) NOT NULL,
+  `message` varchar(256) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `autism_online`
+--
+
+CREATE TABLE IF NOT EXISTS `autism_online` (
+  `id` int(11) NOT NULL,
+  `lastseen` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `autism_users`
 --
 
@@ -59,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `autism_users` (
   `address` varchar(200) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `autism_users`
@@ -70,7 +95,8 @@ INSERT INTO `autism_users` (`id`, `name`, `type`, `phone`, `address`, `email`, `
 (8, 'Anas M', 2, '9567212800', 'Thaiparamb Kottayam', 'anas@ac.com', '1234'),
 (9, 'Admin', 1, '9496120742', 'admins address', 'admin@ac.com', '1234'),
 (10, 'Jobin', 3, '9496120741', 'My Address', 'jobinar007@gmail.com', ''),
-(11, 'Dr Anas', 4, '8759641230', 'Address of Anas ', 'anas@gmail.com', '');
+(11, 'Dr Anas', 4, '8759641230', 'Address of Anas ', 'anas@gmail.com', '123456'),
+(12, 'Shyam Krishnan', 4, '9562312545', '', 'shyam@gmail.com', '123456');
 
 -- --------------------------------------------------------
 
@@ -103,6 +129,18 @@ ALTER TABLE `autism_articles`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `autism_chat`
+--
+ALTER TABLE `autism_chat`
+ ADD PRIMARY KEY (`id`), ADD KEY `from` (`from_id`,`to_id`), ADD KEY `from_id` (`from_id`,`to_id`), ADD KEY `to_id` (`to_id`);
+
+--
+-- Indexes for table `autism_online`
+--
+ALTER TABLE `autism_online`
+ ADD PRIMARY KEY (`id`), ADD KEY `id` (`id`);
+
+--
 -- Indexes for table `autism_users`
 --
 ALTER TABLE `autism_users`
@@ -124,15 +162,37 @@ ALTER TABLE `autism_videos`
 ALTER TABLE `autism_articles`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
+-- AUTO_INCREMENT for table `autism_chat`
+--
+ALTER TABLE `autism_chat`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=51;
+--
 -- AUTO_INCREMENT for table `autism_users`
 --
 ALTER TABLE `autism_users`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `autism_videos`
 --
 ALTER TABLE `autism_videos`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `autism_chat`
+--
+ALTER TABLE `autism_chat`
+ADD CONSTRAINT `autism_chat_ibfk_1` FOREIGN KEY (`from_id`) REFERENCES `autism_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `autism_chat_ibfk_2` FOREIGN KEY (`to_id`) REFERENCES `autism_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `autism_online`
+--
+ALTER TABLE `autism_online`
+ADD CONSTRAINT `autism_online_ibfk_1` FOREIGN KEY (`id`) REFERENCES `autism_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

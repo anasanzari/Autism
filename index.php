@@ -51,7 +51,8 @@ if($session->getLoggedin()){
           <h1>About Autism</h2>
           <p>Autism spectrum disorder (ASD) is a complex developmental disability; signs typically appear during early childhood and affect a person’s ability to communicate,
              and interact with others.ASD is defined by a certain set of behaviors and is a “spectrum condition” that affects individuals differently and to varying degrees.
-             </p>
+          </p>
+          <a href="./form.php" class="btn btn-default btn-lg">Questionnaire</a>
         </div>
       </div>
       <div class="row">

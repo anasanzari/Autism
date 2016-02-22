@@ -1,17 +1,4 @@
-<?php
-$f=0;
-if(isset($_POST['submit']))
-{
-  $f=1;
-  $sum=0;
-  $i=1;
-  for($i;$i<6;$i++)
-  {
-    $radio = "r".$i;
-    $sum = $sum + $_POST[$radio];
-  }
-}
- ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,9 +17,11 @@ if(isset($_POST['submit']))
 
   </head>
   <body>
-    <div class="container">
-    <center>
-      <form method="post" action="form.php">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <h1> Questionnaire</h1>
+      <form id="myform" method="post" action="form.php">
       <table class="table table-striped">
         <tr>
           <th>Items</th>
@@ -381,20 +370,23 @@ if(isset($_POST['submit']))
       <th><input type="radio" name="r40" value="5"></th>
     </tr>
       </table>
+      <div class="form-group">
       <input type="submit" class="btn btn-success" name="submit" value="submit">
-    </form>
-    </center>
     </div>
+    </form>
+    </div>
+  </div>
+</div>
 
     <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Score</h4>
+        <h4 class="modal-title" id="myModalLabel">Autism Level</h4>
       </div>
       <div class="modal-body">
-        <?= $sum ?>
+        <p id="level"></p>
       </div>
     </div>
   </div>
@@ -402,14 +394,30 @@ if(isset($_POST['submit']))
 <script type="text/javascript" src="./static/js/jquery.min.js"></script>
 <script type="text/javascript" src="./static/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
-      <?php
-      if($f==1)
-      {?>
-        $('.modal').modal('show');
-     <?php
-}    ?>
+
+  $("#myform").submit(function(){
+
+    $inputs = $('input:radio:checked');
+    var s = 0;
+    $inputs.each(function(index){
+        s += 1.0*$($inputs[index]).val();
     });
+    var t = "";
+    var $p = $("#level");
+    if(s>153){
+      t = "Severe Autism";
+    }else if(s>107){
+      t = "Moderate Autism";
+    }else if(s>70){
+      t = "Mild Autism";
+    }else{
+      t = "No Autism";
+    }
+    $p.html(t);
+    $('.modal').modal('show');
+    return false;
+  })
+
 </script>
   </body>
 </html>
