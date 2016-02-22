@@ -16,10 +16,12 @@ $capsule->addConnection([
   'prefix' => ''
 ]);
 
+
 use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
 $capsule->setEventDispatcher(new Dispatcher(new Container));
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
+$capsule::connection()->enableQueryLog();
 
  ?>

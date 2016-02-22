@@ -10,6 +10,12 @@ class User extends Model {
 	protected $table = 'autism_users';
 	protected $fillable = ['name','phone','address','email','password','type'];
 
+	protected $hidden = ['password'];
+	
+	public function online(){
+		return  $this->hasOne('OnlineUser','id');
+	}
+
 	public function video()
 	    {
 	      return $this->hasMany('Video','user_id');
@@ -18,5 +24,6 @@ class User extends Model {
 			{
 				return $this->hasMany('Article','user_id');
 			}
+
 
 }
