@@ -9,7 +9,18 @@ require_once '../helpers/User.php';
 require_once '../helpers/Article.php';
 require_once '../helpers/Video.php';
 
-$video = Video::all();
+require_once '../helpers/Level.php';
+
+$session = new Session();
+if($session->getLoggedin()){
+  $user = User::find($session->getUsername());
+  $level = Level::where('user_id',$user->id)->first();
+  $video = Video::where('level',$level->level)->get();
+}else{
+  $video = Video::all();
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

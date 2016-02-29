@@ -22,12 +22,19 @@ if(isset($_POST['create']))
   $article->content = $_POST['content'];
   $username = $_SESSION['username'];
   $article->user_id = $username;
+  $article->level = $_POST['level'];
   $article->save();
   header("location: ./index.php");
 }
 
 else{
   $article = Article::find($_GET['id']);
+}
+
+function levelselect($level,$val){
+  if($level==$val){
+    return "selected";
+  }
 }
 ?>
   <?php getTemplate(2,'header'); ?>
@@ -48,6 +55,15 @@ else{
                   <div class="form-group">
                     <label>Name of Article</label>
                     <input class="form-control" name="name" value="<?= $article->name ?>">
+                  </div>
+                  <div class="form-group">
+                    <label>Autism Level</label>
+                    <select class="form-control" name="level">
+                      <option value="1" <?=levelselect($article->level,1)?> >NO AUTISM</option>
+                      <option value="2" <?=levelselect($article->level,2)?> >MILD AUTISM</option>
+                      <option value="3" <?=levelselect($article->level,3)?> >MODERATE AUTISM</option>
+                      <option value="4" <?=levelselect($article->level,4)?> >SEVERE AUTISM</option>
+                    </select>
                   </div>
                   <div class="form-group">
                     <label>Content</label>

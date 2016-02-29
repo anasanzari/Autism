@@ -6,10 +6,17 @@ require_once './helpers/session.php';
 require './helpers/boot.php';
 require_once './helpers/User.php';
 require './helpers/functions.php';
+require './helpers/Level.php';
 
 $session = new Session();
 if($session->getLoggedin()){
   $user = User::find($session->getUsername());
+  $level = Level::where('user_id',$user->id)->first();
+  if($user->type==session::USER_REGULAR&&!$level){
+    header("Location: ./form.php");
+  }else{
+
+  }
 }
 
 
@@ -52,7 +59,7 @@ if($session->getLoggedin()){
           <p>Autism spectrum disorder (ASD) is a complex developmental disability; signs typically appear during early childhood and affect a person’s ability to communicate,
              and interact with others.ASD is defined by a certain set of behaviors and is a “spectrum condition” that affects individuals differently and to varying degrees.
           </p>
-          <a href="./form.php" class="btn btn-default btn-lg">Questionnaire</a>
+        
         </div>
       </div>
       <div class="row">

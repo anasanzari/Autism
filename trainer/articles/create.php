@@ -23,6 +23,7 @@ if(isset($_POST['create']))
   $article->content = $_POST['content'];
   $username = $_SESSION['username'];
   $article->user_id = $username;
+  $article->level = $_POST['level'];
   $article->save();
   header("Location: ./index.php");
 }
@@ -47,6 +48,15 @@ if(isset($_POST['create']))
           <div class="form-group" name="name">
             <label>Name of Article</label>
             <input class="form-control" name="name">
+          </div>
+          <div class="form-group">
+            <label>Autism Level</label>
+            <select class="form-control" name="level">
+              <option value="1">NO AUTISM</option>
+              <option value="2">MILD AUTISM</option>
+              <option value="3">MODERATE AUTISM</option>
+              <option value="4">SEVERE AUTISM</option>
+            </select>
           </div>
           <div class="form-group">
             <label>Content</label>

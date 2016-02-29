@@ -44,6 +44,7 @@ if(isset($_POST['upload']))
         "../../videos/" . $_FILES["file"]["name"]);
         $video->link =  $_FILES["file"]["name"];
         $video->type = $_FILES["file"]["type"];
+        $video->level = $_POST['level'];
         $username = $_SESSION['username'];
         $video->user_id = $username;
         $video->save();
@@ -100,6 +101,15 @@ if(isset($_POST['upload']))
           <div class="form-group">
             <label>Name</label>
               <input class="form-control" type="text" name="vid_name">
+          </div>
+          <div class="form-group">
+            <label>Autism Level</label>
+            <select class="form-control" name="level">
+              <option value="1">NO AUTISM</option>
+              <option value="2">MILD AUTISM</option>
+              <option value="3">MODERATE AUTISM</option>
+              <option value="4">SEVERE AUTISM</option>
+            </select>
           </div>
           <div class="form-group">
             <label>Video</label>

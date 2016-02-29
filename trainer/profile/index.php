@@ -30,10 +30,10 @@ $user = User::find($username);
       <div class="col-md-12">
 
         <h2>Profile</h2>
-        <p><b><?= $user->name ?></b></p>
-        <p><b><?= $user->email ?></b></p>
-        <p><b><?= $user->address ?></b></p>
-        <p><b><?= $user->phone ?></b></p>
+        <p><i class="fa fa-user "></i>&nbsp;&nbsp;<b><?= $user->name ?></b></p>
+        <p><i class="fa fa-send "></i>&nbsp;&nbsp;<b><?= $user->email ?></b></p>
+        <p><i class="fa fa-home "></i>&nbsp;&nbsp;<b><?= $user->address ?></b></p>
+        <p><i class="fa fa-phone "></i>&nbsp;&nbsp;<b><?= $user->phone ?></b></p>
 
         <a href="edit.php?id=<?= $user->id ?>" class="btn btn-default">Edit Details</a>
         <a href="edit_pass.php?id=<?= $user->id ?>" class="btn btn-default">Change Password</a>

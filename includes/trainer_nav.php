@@ -9,7 +9,7 @@ $videolink = "../videos/index.php";
 $articlelink = "./index.php";
 $profilelink = "../profile/index.php";
 }
-else if($params['page']=='video')
+else if($params['page']=='videos')
 {
   $videolink = "./index.php";
   $articlelink = "../articles/index.php";

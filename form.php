@@ -1,4 +1,34 @@
+<?php
 
+require __DIR__.'/./vendor/autoload.php';
+require './config.php';
+require_once './helpers/session.php';
+require './helpers/boot.php';
+require_once './helpers/User.php';
+require './helpers/functions.php';
+require './helpers/Level.php';
+
+$session = new Session();
+
+if(!$session->getLoggedin()){
+  header("Location: index.php");
+}
+
+$user = User::find($session->getUsername());
+
+if(isset($_POST['level'])){
+  $level = new Level;
+  $level->user_id = $session->getUsername();
+  $level->level = $_POST['level'];
+  $level->save();
+  header("Location: index.php");
+}
+
+
+
+
+
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -387,7 +417,14 @@
       </div>
       <div class="modal-body">
         <p id="level"></p>
+        <form action="form.php" method="POST">
+          <input id="flevel" type="hidden" name="level" value="0" />
+          <div class="form-group">
+          <input  type="submit" class="btn btn-default" value="Save"/>
+          </div>
+        </form>
       </div>
+
     </div>
   </div>
 </div>
@@ -395,25 +432,35 @@
 <script type="text/javascript" src="./static/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
+var $l = $("#flevel");
+
   $("#myform").submit(function(){
 
     $inputs = $('input:radio:checked');
+
     var s = 0;
     $inputs.each(function(index){
         s += 1.0*$($inputs[index]).val();
     });
     var t = "";
     var $p = $("#level");
+    var lev;
     if(s>153){
       t = "Severe Autism";
+      lev = 4;
     }else if(s>107){
       t = "Moderate Autism";
+      lev = 3;
     }else if(s>70){
       t = "Mild Autism";
+      lev = 2;
     }else{
       t = "No Autism";
+      lev = 1;
     }
     $p.html(t);
+    console.log($l);
+    $l.val(lev);
     $('.modal').modal('show');
     return false;
   })

@@ -8,8 +8,19 @@ require '../helpers/functions.php';
 require_once '../helpers/User.php';
 require_once '../helpers/Article.php';
 
+require_once '../helpers/Level.php';
 
-$articles = Article::all();
+$session = new Session();
+if($session->getLoggedin()){
+  $user = User::find($session->getUsername());
+  $level = Level::where('user_id',$user->id)->first();
+  $articles = Article::where('level',$level->level)->get();
+}else{
+  $articles = Article::all();
+}
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
