@@ -50,6 +50,8 @@
   }
 }
 
+
+
 .slc{
   @extend .slcontainer;
   padding-top: 150px;
@@ -88,6 +90,9 @@
   }
   .subp-a{
     background: url('../images/dash.jpg');
+  }
+  .subp-d{
+    background: url('../images/dev.jpg');
   }
 
   .subp{

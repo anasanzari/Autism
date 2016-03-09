@@ -34,7 +34,7 @@ $user = User::find($session->getUsername());
 </head>
 
 <body ng-app="app">
-
+<?php getTemplate(1,'log_bar',['user'=>$user]); ?>
 <div class="slc">
   <div class="slope subp subp-a">
     <div class="scontent">

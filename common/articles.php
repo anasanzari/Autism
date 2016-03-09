@@ -11,6 +11,7 @@ require_once '../helpers/Article.php';
 require_once '../helpers/Level.php';
 
 $session = new Session();
+$user = NULL;
 if($session->getLoggedin()){
   $user = User::find($session->getUsername());
   $level = Level::where('user_id',$user->id)->first();
@@ -40,6 +41,8 @@ if($session->getLoggedin()){
 </head>
 
 <body>
+
+<?php getTemplate(1,'log_bar',['user'=>$user]); ?>
 
 <div class="slc">
   <div class="slope subp subp-a">

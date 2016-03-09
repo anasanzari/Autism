@@ -20,7 +20,6 @@ if($session->getLoggedin()){
 }
 
 
-
 ?>
 
 <!DOCTYPE html>
@@ -33,15 +32,22 @@ if($session->getLoggedin()){
   <title>Autism</title>
   <link href="./static/css/awe.css" rel="stylesheet">
   <link href="./static/css/player.css" rel="stylesheet">
-  <script type="text/javascript" src="./static/js/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="./static/js/jquery.min.js"></script>
   <script type="text/javascript" src="./static/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="./static/js/video.min.js"></script>
 
 </head>
 
 <body>
+<?php if(isset($user)){?>
+<div class="logheader">
+  <ul>
+    <li><a href="logout.php">Logout</a></li>
+  </ul>
+</div>
+<?php } ?>
 
-<div class="slc">
+<div class="slc <?=isset($user)?"logpad":""?>">
   <div class="slope main">
     <div class="scontent">
       <h1>Autism Community</h1>
@@ -59,7 +65,7 @@ if($session->getLoggedin()){
           <p>Autism spectrum disorder (ASD) is a complex developmental disability; signs typically appear during early childhood and affect a person’s ability to communicate,
              and interact with others.ASD is defined by a certain set of behaviors and is a “spectrum condition” that affects individuals differently and to varying degrees.
           </p>
-        
+
         </div>
       </div>
       <div class="row">
@@ -108,17 +114,21 @@ if($session->getLoggedin()){
 
         <div class="row tiles">
           <h1>Services</h1>
-          <div class="col-md-4">
+          <div class="col-md-3">
             <img src="./static/images/icons/talk.png" />
             <a href="./chat/index.php"><h3>Online training</h3></a>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
             <a href="./common/videos.php"><img  src="./static/images/icons/videos.png" /></a>
             <a href="./common/videos.php"><h3>Watch videos</h3></a>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
             <a href="./common/articles.php"><img src="./static/images/icons/text.png" /></a>
             <a href="./common/articles.php"><h3>Read Articles</h3></a>
+          </div>
+          <div class="col-md-3">
+            <a href="./common/list.php"><img src="./static/images/icons/team.png" /></a>
+            <a href="./common/list.php"><h3>Trainers and Doctors</h3></a>
           </div>
         </div>
 </div>

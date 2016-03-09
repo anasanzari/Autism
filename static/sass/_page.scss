@@ -412,6 +412,46 @@ content: "\e180 1";
   }
 }
 
+.logheader{
+  width: 100%;
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  top:0;
+  $bg :  #5F5F5F;
+  background-color: $bg;
+  @include boxshadow(2px,2px,10px,1px);
+  z-index: 1500;
+
+  ul{
+    list-style: none;
+    float: right;
+    margin: 0px 0px;
+    li{
+      display: inline-block;
+      a{
+        display: block;
+        padding: 8px 10px;
+        height: 50px;
+        line-height: 50px - 10px;
+        color:#fff;
+        text-decoration: none;
+        &:hover{
+          background-color: darken($bg, 10%);
+        }
+      }
+    }
+  }
+
+}
+.logpad{
+  margin-top: 50px;
+}
+.logheader + .slc{
+  margin-top: 50px;
+}
+
+
 
 @media screen and (max-width: 400px){
 
